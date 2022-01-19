@@ -1,0 +1,47 @@
+.posts {
+    font-family: 'Manrope', sans-serif;
+
+    width: 80%;
+    min-height: 300px;
+    background: rgb(235, 233, 233);
+    margin: 0 auto;
+    padding: 1em;
+    align-self: center;
+    border-radius: 7px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.posts-container {
+    font-family: 'Manrope', sans-serif;
+
+    width: 80%;
+    min-height: 300px;
+    background: rgb(235, 233, 233);
+    margin: 3em auto;
+    padding: 1em;
+    align-self: center;
+    border-radius: 7px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.add-btn {
+    padding: 1em 1.4em;
+    font-weight: bold;
+    border: .5px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+
+    background: white;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: black;
+    color: white;
+}

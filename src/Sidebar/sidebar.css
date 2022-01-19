@@ -6,3 +6,49 @@
 
     padding: 0 .7em;
 }
+
+.link-week {
+    cursor: pointer;
+    position: relative;
+    color: black;
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.link-week::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: gray;
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 250ms ease-in-out
+}
+
+.link-week:hover::after {
+    transform: scaleX(1);
+}
+
+.link-active {
+    position: relative;
+    color: black;
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.link-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: gray;
+    transform: scaleX(1);
+}
