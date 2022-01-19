@@ -4,6 +4,7 @@
 	--color-one: #5526fb;
 	--color-two: #ffffff;
 	--color-three: #6dfcd2;
+	--color-three-hover: #a8f7df;
 	--color-four: #7c59de;
 	--color-five: #f2f2f2;
 	--color-six: #b2b2b2;
@@ -14,7 +15,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	outline: 1px solid red;
+	/* outline: 1px solid red; */
 }
 
 .App {
@@ -29,4 +30,14 @@
 }
 body {
 	background: white;
+}
+
+.main {
+	grid-area: win;
+}
+
+.mid {
+	display: flex;
+	justify-content: space-between;
+	padding: 5%;
 }

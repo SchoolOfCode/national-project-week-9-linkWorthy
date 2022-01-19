@@ -4,6 +4,8 @@ import { API_URL } from "../Config";
 
 import Header from "../Header";
 import Sidebar from "../Sidebar";
+import MainTop from "../MainTop";
+import AddPostsButton from "../AddPostsButton";
 // import Posts from '../Posts';
 // import AddAnItemForm from '../AddAnItemForm';
 import Posts from "../Posts";
@@ -82,16 +84,17 @@ function App() {
 			{error && <div>{error}</div>}
 			{isPending && <div>Loading...</div>}
 			{/* {newData && <Post data={newData}/>} */}
-
 			<Header />
 			{/* <Sidebar /> */}
-			<div className="left">
-				<Sidebar newData={newData} />
-			</div>
-
+			<Sidebar newData={newData} />
 			{/* <AddAnItemForm /> */}
-
-			<Posts />
+			<div className="main">
+				<div className="mid">
+					<MainTop />
+					<AddPostsButton />
+				</div>
+				<Posts />
+			</div>
 		</div>
 	);
 }
