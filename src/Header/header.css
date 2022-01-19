@@ -1,0 +1,27 @@
+
+
+.header {
+    grid-area: header;
+    /* border-top: 1px solid red; */
+    background: rgb(69, 69, 214);
+
+    display: flex;
+}
+
+.logo {
+    margin: .7em;
+    width: 70px;
+}
+
+.title {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.sub-title {
+    font-family: 'Manrope', sans-serif;
+}
+
+.title, .sub-title {
+    margin: .3em 0 0 0;
+}
+

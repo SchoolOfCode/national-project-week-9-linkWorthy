@@ -1,0 +1,11 @@
+.form {
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: .8em;
+}
+
+.form-input {
+    margin: .2em 0 .5em 0;
+}

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;700&display=swap');
+
+.App {
+  background: yellow;
+  height: 100vh;
+  width: 100vw;
+  
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 150px 1fr;
+  grid-template-areas: 
+    'header header'
+    'sidebar win'
+  ;
+
+}
+
+

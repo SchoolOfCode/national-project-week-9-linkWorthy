@@ -1,0 +1,8 @@
+.sidebar {
+    grid-area: sidebar;
+    /* border-top: 1px solid red; */
+    background: white;
+    font-family: 'Manrope', sans-serif;
+
+    padding: 0 .7em;
+}
