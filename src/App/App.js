@@ -22,7 +22,7 @@ function App() {
   const [newData, setNewData] = useState({});
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(true);
-  const [posts, setPosts] = useState(null);
+  // const [posts, setPosts] = useState(null);
 
   // async function getWeeks() {
   //   const response = await fetch(`${API_URL}/weeks`);
@@ -48,7 +48,7 @@ function App() {
         setIsPending(false);
         setError(err.message);
       })
-    reseiveData();
+   
   }, []);
   
   console.log(newData);
@@ -83,13 +83,14 @@ function App() {
 
   return (
     <div className="App">
-      {/* {error && <div>{ error }</div>}
-      {isPending && <div>Loading...</div>} */}
+      {error && <div>{ error }</div>}
+      {isPending && <div>Loading...</div>}
       {/* {newData && <Post data={newData}/>} */}
 
       <Header />
-
-      {newData.map(week => <Sidebar key={week.id} id={week.id} topic={week.topic}/>)}
+      {/* <Sidebar /> */}
+      <Sidebar newData={newData}/>
+      
       
       {/* <AddAnItemForm /> */}
       <Posts />
