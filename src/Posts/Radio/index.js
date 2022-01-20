@@ -17,3 +17,17 @@ function Radio() {
 }
 
 export default Radio;
+
+
+
+// function Radio({ isComplete }) {
+//     const [complete, setComplete] = useState(false);
+
+//     function completeHandle() {
+//         isComlete ? setComplete(isComplete) : setComplete(!complete);
+//     }
+
+//     return(
+//             <input className="radio-atribute" type="checkbox" onChange={completeHandle} checked={complete}/>
+//     )
+// }

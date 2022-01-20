@@ -8,7 +8,7 @@ import "./sidebar.css";
 //   Link
 // } from "react-router-dom";
 
-function Sidebar({ newData }) {
+function Sidebar({ newData, handleWeekId }) {
 	console.log(newData);
 	const [focus, setFocus] = useState(false);
 
@@ -21,22 +21,21 @@ function Sidebar({ newData }) {
 	return (
 		<div className="sidebar">
 			{Object.values(newData).map((week) => (
-				<div key={week.id} className="week-div">
+				<div key={week.id} className="week-div" onClick={() => handleWeekId(week.id)>
 					<p className="link-week">WEEK {week.id}</p>
 					<p className="link-topic">{week.topic}</p>
 				</div>
 			))}
 		</div>
 	);
-}
 
+}
 export default Sidebar;
 
-{
-	/* <Router>
+
+/* <Router>
             
-            <Link to='/weeks/1' className={!focus ? "link-week": "link-active"} onClick={focusLink}>Week 1 - Foundation</Link>
-           
-           <Link to='/weeks/3' className="link-week">Week 3 - Front End</Link>
-           </Router> */
-}
+     <Link to='/weeks/1' className={!focus ? "link-week": "link-active"} onClick={focusLink}>Week 1 - Foundation</Link> 
+     <Link to='/weeks/3' className="link-week">Week 3 - Front End</Link>
+  </Router> */
+

@@ -1,6 +1,9 @@
+
 import React from "react";
 import Post from "./Post";
 import "./posts.css";
+
+// { posts }
 
 function Posts() {
 	return (
@@ -14,8 +17,10 @@ function Posts() {
 			<Post />
 			<Post />
 			<Post />
+      {/* <Post posts={posts}/> */}
 		</div>
 	);
+
 }
 
 export default Posts;

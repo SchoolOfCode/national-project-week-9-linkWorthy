@@ -21,7 +21,9 @@ function App() {
 	const [newData, setNewData] = useState({});
 	const [error, setError] = useState(null);
 	const [isPending, setIsPending] = useState(true);
-	// const [posts, setPosts] = useState(null);
+	const [posts, setPosts] = useState(null);
+	const [weekId, setWeekId] = useState(0);
+
 
 	// async function getWeeks() {
 	//   const response = await fetch(`${API_URL}/weeks`);
@@ -51,11 +53,9 @@ function App() {
 
 	console.log(newData);
 
-	// console.log(newData[0].id);
-	// const weekOne = newData.filter(week => week.id === 1);
 
 	// useEffect(() => {
-	//   fetch(`${API_URL}/weeks/1`)
+	//   fetch(`${API_URL}/weeks/${weekId}`)
 	//   .then(res => {
 	//     if (!res.ok) {
 	//       throw Error('could not fetch the data for for that resourse');
@@ -72,31 +72,58 @@ function App() {
 	//     setIsPending(false);
 	//     setError(err.message);
 	//   })
-	// }, [newData]);
+	// }, [weekId]);
 
 	// getWeeks();
 	// console.log(weekOne);
 
 	// useEffect
 
+//================================There are some Sidebar values =====================================
+// function handleWeekId(id) {
+// 		setWeekId(id);
+// }
+		
+
 	return (
 		<div className="App">
 			{error && <div>{error}</div>}
 			{isPending && <div>Loading...</div>}
 			{/* {newData && <Post data={newData}/>} */}
-			<Header />
-			{/* <Sidebar /> */}
-			<Sidebar newData={newData} />
-			{/* <AddAnItemForm /> */}
-			<div className="main">
-				<div className="mid">
-					<MainTop />
-					<AddPostsButton />
-				</div>
-				<Posts />
-			</div>
-		</div>
-	);
-}
 
+      <Header />
+			  {/* <Sidebar /> */}
+			  <Sidebar newData={newData} />
+			  {/* <AddAnItemForm /> */}
+			  <div className="main">
+				  <div className="mid">
+					  <MainTop />
+            //Title top left
+					  <AddPostsButton />
+				  </div>
+				  <Posts />
+          </div>
+        </div>
+	  );
+  }
+
+{/* <Sidebar newData={newData} handleWeekId={handleWeekId}/> */}
+{/* <AddAnItemForm onSubmit={onSubmit}/> */}
+{/* <Posts posts={posts} /> */}
+			
+
+//================================There are some AddAnItemForm values =====================================
+//const [newPost, setNewPost] = useState({});
+
+// function onSubmit(language, link, summary) {
+// 	const templatePost = {
+// 		week: {id},
+// 		language: language,
+// 		link: link,
+// 		summary: summary
+// 	}
+// 	templatePost ? setNewPost(templatePost) : null;
+// }
+
+			
 export default App;
