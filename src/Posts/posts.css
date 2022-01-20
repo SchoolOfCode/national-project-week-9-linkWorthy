@@ -3,11 +3,16 @@
 	/* width: 80%;
 	min-height: 300px; */
 	/* margin: 0 auto; */
-	padding: 1em;
+	align-content: space-around;
 	align-self: center;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-evenly;
+	row-gap: 20px;
+	column-gap: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	word-wrap: break-word;
 }
 
 /* .posts-container {
