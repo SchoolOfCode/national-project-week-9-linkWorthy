@@ -1,6 +1,6 @@
 import React from "react";
 import "./post.css";
-import Radio from "../../Radio";
+import CompletionButton from "../../CompletionButton";
 
 // { posts }
 
@@ -8,7 +8,7 @@ function Post({ isComplete, week, link, tags, summary }) {
 	return (
 		<div className="post post-grid">
 			<div className="post-header">
-				<Radio isComplete={isComplete} />
+				<CompletionButton isComplete={isComplete} />
 				<p className="post-week">
 					<span class="material-icons-outlined material-icons delete-button">
 						clear
