@@ -7,7 +7,7 @@ function Header() {
 		<div className="header">
 			<img src={logo} className="logo" alt="School of Code Logo" />
 			<div className="header-titles">
-				<h1 className="title">[our app name]</h1>
+				<h1 className="title">[ link worthy ]</h1>
 				<h3 className="sub-title">
 					a home for all your school of code bookmarks
 				</h3>
