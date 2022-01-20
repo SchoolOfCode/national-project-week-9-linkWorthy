@@ -1,11 +1,38 @@
 .form {
-    display: flex;
-    flex-direction: column;
-
-    font-family: 'Manrope', sans-serif;
-    font-size: .8em;
+	display: flex;
+	flex-direction: column;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: var(--color-five);
+	font-size: 0.8em;
+	border-radius: 8%;
 }
 
 .form-input {
-    margin: .2em 0 .5em 0;
+	font-family: var(--font-style-2);
+	/* font-weight: bolder; */
+	margin: 10px;
+	border-radius: 8px;
+	padding: 5px;
+	border-style: none;
+}
+
+.submit-button {
+	font-family: var(--font-style-1);
+	background-color: var(--color-three);
+	border-radius: 45px;
+	color: #000000;
+	font-family: var(--font-style-1);
+	font-weight: bolder;
+	border-style: none;
+}
+
+.submit-button:hover {
+	background-color: var(--color-three-hover);
+	cursor: pointer;
+}
+.fi-desc {
+	height: 60px;
 }
