@@ -3,10 +3,10 @@ import './addAnItemForm.css';
 
 import Inputs from './Inputs';
 
-function AddAnItemForm() {
+function AddAnItemForm({ onSubmit }) {
     return(
             <div className="window">
-                <Inputs />
+                <Inputs onSubmit={onSubmit}/>
             </div>
             
     )

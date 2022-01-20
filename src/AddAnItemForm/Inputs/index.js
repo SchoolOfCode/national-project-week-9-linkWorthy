@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './inputs.css';
 
-function Inputs() {
+function Inputs({ onSubmit }) {
+    
+    const [language, setLanguage] = useState('');
+    const [link, setLink] = useState('');
+    const [summary, setSummary] = useState('');
+    
+    function handleLanguages(event) {
+        event.preventDefault();
+        const topic = event.target.value;
+        setLanguage(topic);
+    }
+    function handleLink(event) {
+        event.preventDefault();
+        const link = event.target.value;
+        setLink(link);
+    }
+    function handleSummary(event) {
+        event.preventDefault();
+        const summary = event.target.value;
+        setSummary(summary);
+    }
+
+    
+
     return(
         <div className="form">
-            <label> Note's topic  
+            <label> Languages   
             </label>
-                <input className="form-input" type='text' name='topic'/>
-            <label> Used languages   
+                <input className="form-input" type='text' onChange={handleLanguages}/>
+            <label> Useful link  
             </label>
-                <input className="form-input" type='text' name='language'/>
-            <label> Useful links  
-            </label>
-                <input className="form-input" type='text' name='links'/>
+                <input className="form-input" type='text' onChange={handleLink}/>
             <label> Summary  
             </label>
-                <textarea className="form-input" type='text' name='summary' placeholder='Your summary' />
+                <textarea className="form-input" type='text' onChange={handleSummary} placeholder='Your summary' />
             <br/>
-            <button>Submit</button>
+            <button onClick={() => onSubmit(language, link, summary)}>Submit</button>
         </div>  
     )
 }
