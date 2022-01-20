@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./sidebar.css";
-
+// { useState }
 // import {
 //   BrowserRouter as Router,
 // //   Switch,
@@ -9,29 +9,26 @@ import "./sidebar.css";
 // } from "react-router-dom";
 
 function Sidebar({ newData, handleWeekId }) {
-  console.log(newData);
-  const [focus, setFocus] = useState(false);
 
-  function focusLink() {
-    setFocus(!focus);
-  }
+	// console.log(newData);
+	// const [focus, setFocus] = useState(false);
 
-  // let week = newData.map(week => <Link key={week.id} to={`/week${week.id}`} className={!focus ? "link-week": "link-active"} onClick={focusLink}>`Week ${week.id} - ${week.topic}`</Link>);
+	// function focusLink() {
+	// 	setFocus(!focus);
+	// }
 
-  return (
-    <div className="sidebar">
-      {Object.values(newData).map((week) => (
-        <div
-          key={week.id}
-          className="week-div"
-          onClick={() => handleWeekId(week.id)}
-        >
-          <p className="link-week">WEEK {week.id}</p>
-          <p className="link-topic">{week.topic}</p>
-        </div>
-      ))}
-    </div>
-  );
+	// let week = newData.map(week => <Link key={week.id} to={`/week${week.id}`} className={!focus ? "link-week": "link-active"} onClick={focusLink}>`Week ${week.id} - ${week.topic}`</Link>);
+
+	return (
+		<div className="sidebar">
+			{Object.values(newData).map((week) => (
+				<div key={week.id} className="week-div" onClick={() => handleWeekId(week.id, week.topic)}>
+					<p className="link-week">WEEK {week.id}</p>
+					<p className="link-topic">{week.topic}</p>
+				</div>
+            ))}
+		</div>
+	);
 }
 export default Sidebar;
 
