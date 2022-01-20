@@ -86,6 +86,32 @@ function App() {
 		}
 	}
 
+	// [START] TEMPORARY FIX TO RENEDER WEEK 1 ON MOUNT
+	useEffect(() => {
+		handleWeekId(1, "Foundations");
+	}, []);
+
+	useEffect(() => {
+		fetch(`${API_URL}/weeks/1/resources`)
+			.then((res) => {
+				if (!res.ok) {
+					throw Error("could not fetch the data for for that resourse");
+				}
+				return res.json();
+			})
+			.then((data) => {
+				setIsPending(false);
+				setPosts(data.payload);
+				setError(null);
+			})
+			.catch((err) => {
+				//auto catches network / connection error
+				setIsPending(false);
+				setError(err.message);
+			});
+	}, []);
+	// [END] TEMPORARY FIX TO RENEDER WEEK 1 ON MOUNT
+
 	function onSubmit(language, link, summary, setLanguage, setLink, setSummary) {
 		const templatePost = {
 			tags: language,
