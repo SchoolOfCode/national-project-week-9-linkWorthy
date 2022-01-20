@@ -20,7 +20,12 @@ function Post({ isComplete, week, link, tags, summary }) {
 				<p>
 					<span class="material-icons-outlined material-icons">link</span>
 				</p>
-				<a className="post-description-link" href={link}>
+				<a
+					className="post-description-link"
+					href={link}
+					rel="noopener noreferrer"
+					target="_blank"
+				>
 					{summary}
 				</a>
 			</p>
