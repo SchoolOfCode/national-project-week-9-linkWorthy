@@ -87,7 +87,7 @@ function App() {
 		  setIsPending(false);
 		  setError(err.message);
 		})
-	  }, [newPost]);
+	  }, [newPost, weekId]);
 	// getWeeks();
 	// console.log(weekOne);
 
