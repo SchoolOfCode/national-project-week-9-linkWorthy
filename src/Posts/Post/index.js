@@ -16,7 +16,7 @@ function Post({ isComplete, week, link, tags, summary }) {
                     <p className="post-week">week {week}</p>
                 </div>
         
-                <p className="post-description">Summary: <a href={link} target="_blank">{summary}</a></p>
+                <p className="post-description">Summary: <a href={link}>{summary}</a></p>
                 <p className="post-tags">Tag: {tags}</p>
             </div>
 	);
