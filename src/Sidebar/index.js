@@ -1,5 +1,5 @@
 import React from "react";
-import "./sidebar.css";
+import "./styles.css";
 // { useState }
 // import {
 //   BrowserRouter as Router,
@@ -9,7 +9,6 @@ import "./sidebar.css";
 // } from "react-router-dom";
 
 function Sidebar({ newData, handleWeekId }) {
-
 	// console.log(newData);
 	// const [focus, setFocus] = useState(false);
 
@@ -22,11 +21,15 @@ function Sidebar({ newData, handleWeekId }) {
 	return (
 		<div className="sidebar">
 			{Object.values(newData).map((week) => (
-				<div key={week.id} className="week-div" onClick={() => handleWeekId(week.id, week.topic)}>
+				<div
+					key={week.id}
+					className="week-div"
+					onClick={() => handleWeekId(week.id, week.topic)}
+				>
 					<p className="link-week">WEEK {week.id}</p>
 					<p className="link-topic">{week.topic}</p>
 				</div>
-            ))}
+			))}
 		</div>
 	);
 }
