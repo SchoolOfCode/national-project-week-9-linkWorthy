@@ -10,7 +10,7 @@ function Post({ isComplete, week, link, tags, summary }) {
 			<div className="post-header">
 				<CompletionButton isComplete={isComplete} />
 				<p className="post-week">
-					<span class="material-icons-outlined material-icons delete-button">
+					<span className="material-icons-outlined material-icons delete-button">
 						clear
 					</span>
 				</p>
@@ -18,16 +18,18 @@ function Post({ isComplete, week, link, tags, summary }) {
 
 			<p className="post-description">
 				<p>
-					<span class="material-icons-outlined material-icons">link</span>
+					<span className="material-icons-outlined material-icons">link</span>
 				</p>
-				<a
-					className="post-description-link"
-					href={link}
-					rel="noopener noreferrer"
-					target="_blank"
-				>
-					{summary}
-				</a>
+				<div className="word-wrap">
+					<a
+						className="post-description-link"
+						href={link}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						{summary}
+					</a>
+				</div>
 			</p>
 			<p className="post-tags">
 				<span className="tags-span">{tags}</span>

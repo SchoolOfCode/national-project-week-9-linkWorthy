@@ -10,7 +10,7 @@ function CompletionButton({ isComplete }) {
 	return (
 		<div>
 			<span
-				class="material-icons-outlined material-icons completion-button"
+				className="material-icons-outlined material-icons completion-button"
 				onChange={completeHandle}
 			>
 				{isComplete ? "check_circle" : "radio_button_unchecked"}

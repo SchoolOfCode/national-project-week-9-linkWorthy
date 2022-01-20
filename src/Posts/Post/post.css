@@ -13,6 +13,7 @@
 	color: black;
 	font-weight: 400;
 	flex: 0 1 0px;
+	word-wrap: break-word;
 }
 
 .post:hover {
@@ -39,10 +40,15 @@
 .post-description-link {
 	text-decoration: none;
 	color: black;
+	word-wrap: break-word;
+}
+.word-wrap {
+	word-wrap: break-word;
 }
 
 .post-description-link:hover {
 	color: var(--color-one);
+	word-wrap: break-word;
 }
 
 .post-description {
