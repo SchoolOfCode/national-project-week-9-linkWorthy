@@ -50,7 +50,7 @@ function App() {
 
 
 	useEffect(() => {
-	  fetch(`${API_URL}/weeks/${weekId}`)
+	  fetch(`${API_URL}/weeks/${weekId}/resources`)
 	  .then(res => {
 	    if (!res.ok) {
 	      throw Error('could not fetch the data for for that resourse');
