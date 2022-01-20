@@ -1,6 +1,6 @@
 import React from "react";
 import "./post.css";
-import Radio from "../Radio";
+import Radio from "../../Radio";
 
 // { posts }
 

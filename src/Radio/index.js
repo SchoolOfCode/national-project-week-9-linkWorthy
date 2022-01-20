@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Post/post.css";
+import "../Posts/Post/post.css";
 
 function Radio({ isComplete }) {
 	const [complete, setComplete] = useState(false);
@@ -21,11 +21,6 @@ function Radio({ isComplete }) {
 			>
 				{isComplete ? "check_circle" : "radio_button_unchecked"}
 			</span>
-			{/* <input
-				className="radio-atribute"
-				type="checkbox"
-				onChange={completeHandle}
-			/> */}
 		</div>
 	);
 }
