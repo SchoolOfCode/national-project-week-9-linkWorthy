@@ -3,11 +3,17 @@ import React from "react";
 import Post from "./Post";
 import "./posts.css";
 
+
 // { posts }
 
-function Posts() {
-	return (
+function Posts({ posts }) {
+	
+    return (
 		<div className="posts">
+            
+
+
+            {/* <Post />
 			<Post />
 			<Post />
 			<Post />
@@ -15,9 +21,8 @@ function Posts() {
 			<Post />
 			<Post />
 			<Post />
-			<Post />
-			<Post />
-      {/* <Post posts={posts}/> */}
+			<Post /> */}
+           {Object.values(posts).map((card, index) =>  <Post key={index} isComplete={card.iscomplete} week={card.week} link={card.link} tags={card.tags} summary={card.summary}/>)}
 		</div>
 	);
 

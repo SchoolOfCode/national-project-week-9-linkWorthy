@@ -7,24 +7,26 @@ import Sidebar from "../Sidebar";
 import MainTop from "../MainTop";
 import AddPostsButton from "../AddPostsButton";
 // import Posts from '../Posts';
-// import AddAnItemForm from '../AddAnItemForm';
+import AddAnItemForm from '../AddAnItemForm';
 import Posts from "../Posts";
 
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
 	const [newData, setNewData] = useState({});
 	const [error, setError] = useState(null);
 	const [isPending, setIsPending] = useState(true);
-	const [posts, setPosts] = useState(null);
+	const [posts, setPosts] = useState({});
 	const [weekId, setWeekId] = useState(0);
+	const [weekTopic, setWeekTopic] = useState('');
+	const [newPost, setNewPost] = useState({});
 
-
+	
 	// async function getWeeks() {
 	//   const response = await fetch(`${API_URL}/weeks`);
 	//   const data = await response.json();
@@ -51,28 +53,27 @@ function App() {
 			});
 	}, []);
 
-	console.log(newData);
 
 
-	// useEffect(() => {
-	//   fetch(`${API_URL}/weeks/${weekId}`)
-	//   .then(res => {
-	//     if (!res.ok) {
-	//       throw Error('could not fetch the data for for that resourse');
-	//     }
-	//     return res.json();
-	//   })
-	//   .then(data => {
-	//     setIsPending(false);
-	//     setPosts(data);
-	//     setError(null);
-	//   })
-	//   .catch(err => {
-	//     //auto catches network / connection error
-	//     setIsPending(false);
-	//     setError(err.message);
-	//   })
-	// }, [weekId]);
+	useEffect(() => {
+	  fetch(`${API_URL}/weeks/${weekId}`)
+	  .then(res => {
+	    if (!res.ok) {
+	      throw Error('could not fetch the data for for that resourse');
+	    }
+	    return res.json();
+	  })
+	  .then(data => {
+	    setIsPending(false);
+	    setPosts(data.payload);
+	    setError(null);
+	  })
+	  .catch(err => {
+	    //auto catches network / connection error
+	    setIsPending(false);
+	    setError(err.message);
+	  })
+	}, [weekId]);
 
 	// getWeeks();
 	// console.log(weekOne);
@@ -80,10 +81,43 @@ function App() {
 	// useEffect
 
 //================================There are some Sidebar values =====================================
-// function handleWeekId(id) {
-// 		setWeekId(id);
-// }
-		
+	function handleWeekId(id, topic) {
+		setWeekId(id);
+		setWeekTopic(topic);
+	}
+	const [aaif, setAaif] = useState();
+	const [button, setButton] = useState(false);	
+	function handleFormPage() {
+		setButton(!button);
+		if(button) {
+			setAaif(<AddAnItemForm onSubmit={onSubmit}/>);
+		} else {
+			setAaif();
+		}
+	}
+
+	function onSubmit(week, language, link, summary, setWeek, setLanguage, setLink, setSummary) {
+		const templatePost = {
+			week: week,
+			tags: language,
+			summary: summary,
+			link: link,
+			iscomplete: false
+			}
+			
+			setWeek('');
+			setLanguage('');
+			setLink('');
+			setSummary('');
+
+		if(templatePost) {
+			setNewPost(templatePost);
+		} else {
+			return null;
+		} 
+		 
+	}
+
 
 	return (
 		<div className="App">
@@ -91,25 +125,25 @@ function App() {
 			{isPending && <div>Loading...</div>}
 			{/* {newData && <Post data={newData}/>} */}
 
-      <Header />
-			  {/* <Sidebar /> */}
-			  <Sidebar newData={newData} />
-			  {/* <AddAnItemForm /> */}
-			  <div className="main">
+      		<Header />
+			  <Sidebar newData={newData} handleWeekId={handleWeekId} />
+			  
+			    <div className="main">
 				  <div className="mid">
-					  <MainTop />
-            //Title top left
-					  <AddPostsButton />
+            {/* //Title top left  */}
+					  <MainTop weekId={weekId} weekTopic={weekTopic}/>
+					  <AddPostsButton handleFormPage={handleFormPage}/>
 				  </div>
-				  <Posts />
-          </div>
-        </div>
+				  <Posts posts={posts}/>
+			  		  {aaif}
+          		</div>
+			</div>
 	  );
   }
 
-{/* <Sidebar newData={newData} handleWeekId={handleWeekId}/> */}
-{/* <AddAnItemForm onSubmit={onSubmit}/> */}
-{/* <Posts posts={posts} /> */}
+/* <Sidebar newData={newData} handleWeekId={handleWeekId}/> */
+/* <AddAnItemForm onSubmit={onSubmit}/> */
+/* <Posts posts={posts} /> */
 			
 
 //================================There are some AddAnItemForm values =====================================
