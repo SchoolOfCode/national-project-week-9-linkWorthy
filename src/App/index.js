@@ -20,7 +20,7 @@ function App() {
 	const [weekTopic, setWeekTopic] = useState('');
 	const [newPost, setNewPost] = useState({});
 
-	
+	console.log(newPost);
 	// async function getWeeks() {
 	//   const response = await fetch(`${API_URL}/weeks`);
 	//   const data = await response.json();
@@ -50,7 +50,7 @@ function App() {
 
 
 	useEffect(() => {
-	  fetch(`${API_URL}/weeks/${weekId}`)
+	  fetch(`${API_URL}/weeks/${weekId}/resources`)
 	  .then(res => {
 	    if (!res.ok) {
 	      throw Error('could not fetch the data for for that resourse');
@@ -69,6 +69,25 @@ function App() {
 	  })
 	}, [weekId]);
 
+
+	useEffect(() => {
+		fetch(`${API_URL}/weeks/${weekId}/resources`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(newPost),
+		})
+		.then(res => {
+		  if (!res.ok) {
+			throw Error('could not fetch the data for for that resourse');
+		  }
+		  return res.json();
+		})
+		.catch(err => {
+		  //auto catches network / connection error
+		  setIsPending(false);
+		  setError(err.message);
+		})
+	  }, [newPost]);
 	// getWeeks();
 	// console.log(weekOne);
 
@@ -80,39 +99,39 @@ function App() {
 		setWeekTopic(topic);
 	}
 	const [aaif, setAaif] = useState();
-	const [button, setButton] = useState(false);	
+	const [button, setButton] = useState(true);	
+	
 	function handleFormPage() {
-		setButton(!button);
 		if(button) {
-			setAaif(<AddAnItemForm onSubmit={onSubmit}/>);
+			setAaif(<AddAnItemForm onSubmit={onSubmit} button={button}/>);
+			setButton(!button);
 		} else {
 			setAaif();
 		}
 	}
 
-	function onSubmit(week, language, link, summary, setWeek, setLanguage, setLink, setSummary) {
+	function onSubmit(language, link, summary, setLanguage, setLink, setSummary) {
 		const templatePost = {
-			week: week,
-			tags: language,
-			summary: summary,
-			link: link,
-			iscomplete: false
+			"tags": language,
+			"summary": summary,
+			"link": link,
+			"isComplete": false
 			}
 			
-			setWeek('');
-			setLanguage('');
-			setLink('');
-			setSummary('');
-
-		if(templatePost) {
+			setAaif();
 			setNewPost(templatePost);
-		} else {
-			return null;
-		} 
-		 
-		console.log(newPost)
+		// if(templatePost) {
+			
+		// } else {
+		// 	return null;
+		// } 
+		
+		setLanguage('');
+		setLink('');
+		setSummary('');
 	}
-
+	
+	console.log(newPost)
 
 	return (
 		<div className="App">
@@ -127,7 +146,7 @@ function App() {
 				  <div className="mid">
             {/* //Title top left  */}
 					  <MainTop weekId={weekId} weekTopic={weekTopic}/>
-					  <AddPostsButton handleFormPage={handleFormPage}/>
+					  <AddPostsButton handleFormPage={handleFormPage} button={button} weekId={weekId}/>
 				  </div>
 				  <Posts posts={posts}/>
 			  		  {aaif}
