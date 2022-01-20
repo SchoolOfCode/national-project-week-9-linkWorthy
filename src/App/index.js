@@ -18,9 +18,7 @@ function App() {
 	const [posts, setPosts] = useState({});
 	const [weekId, setWeekId] = useState(0);
 	const [weekTopic, setWeekTopic] = useState('');
-	const [newPost, setNewPost] = useState({});
 
-	console.log(newPost);
 	// async function getWeeks() {
 	//   const response = await fetch(`${API_URL}/weeks`);
 	//   const data = await response.json();
@@ -69,25 +67,6 @@ function App() {
 	  })
 	}, [weekId]);
 
-
-	useEffect(() => {
-		fetch(`${API_URL}/weeks/${weekId}/resources`, {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(newPost),
-		})
-		.then(res => {
-		  if (!res.ok) {
-			throw Error('could not fetch the data for for that resourse');
-		  }
-		  return res.json();
-		})
-		.catch(err => {
-		  //auto catches network / connection error
-		  setIsPending(false);
-		  setError(err.message);
-		})
-	  }, [newPost, weekId]);
 	// getWeeks();
 	// console.log(weekOne);
 
@@ -119,19 +98,31 @@ function App() {
 			}
 			
 			setAaif();
-			setNewPost(templatePost);
-		// if(templatePost) {
 			
-		// } else {
-		// 	return null;
-		// } 
+			fetch(`${API_URL}/weeks/${weekId}/resources`, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(templatePost),
+			})
+			.then(res => {
+			  if (!res.ok) {
+				throw Error('could not fetch the data for for that resourse');
+			  }
+			  return res.json();
+			})
+			.catch(err => {
+			  //auto catches network / connection error
+			  setIsPending(false);
+			  setError(err.message);
+			})
+
+		
 		
 		setLanguage('');
 		setLink('');
 		setSummary('');
 	}
 	
-	console.log(newPost)
 
 	return (
 		<div className="App">
@@ -155,22 +146,8 @@ function App() {
 	  );
   }
 
-/* <Sidebar newData={newData} handleWeekId={handleWeekId}/> */
-/* <AddAnItemForm onSubmit={onSubmit}/> */
-/* <Posts posts={posts} /> */
 
 
-//================================There are some AddAnItemForm values =====================================
-//const [newPost, setNewPost] = useState({});
 
-// function onSubmit(language, link, summary) {
-// 	const templatePost = {
-// 		week: {id},
-// 		language: language,
-// 		link: link,
-// 		summary: summary
-// 	}
-// 	templatePost ? setNewPost(templatePost) : null;
-// }
 
 export default App;
