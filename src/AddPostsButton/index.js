@@ -1,10 +1,15 @@
 import React from "react";
 import "./styles.css";
 
-function AddPostsButton({ handleFormPage }) {
+function AddPostsButton({ handleFormPage, button, weekId }) {
 	return (
 		<div className="create-button-div">
-			<button className="create-button" onClick={handleFormPage}>CREATE A POST</button>
+			{!weekId ?  <div></div> : <div><button className="create-button" onClick={handleFormPage}>CREATE A POST</button></div> }
+			
+			{/* {weekId &&  <button className="create-button" onClick={handleFormPage}>CREATE A POST</button>} */}
+			{/* {weekId || button ? <button className="create-button" onClick={handleFormPage}>CREATE A POST</button> : <button className="create-button" onClick={handleFormPage}>CLOSE THE FORM</button>} */}
+			
+			
 		</div>
 	);
 }

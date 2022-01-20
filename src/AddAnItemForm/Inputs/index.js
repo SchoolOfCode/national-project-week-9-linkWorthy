@@ -2,16 +2,12 @@ import React, { useState } from 'react';
 import './inputs.css';
 
 function Inputs({ onSubmit }) {
-    const [week, setWeek] = useState('');
+    
     const [language, setLanguage] = useState('');
     const [link, setLink] = useState('');
     const [summary, setSummary] = useState('');
     
-    function handleWeek(event) {
-        // event.preventDefault();
-        const aWeek = event.target.value;
-        setWeek(aWeek);
-    }
+    
     function handleLanguages(event) {
         // event.preventDefault();
         const topic = event.target.value;
@@ -31,20 +27,17 @@ function Inputs({ onSubmit }) {
     
     return(
         <div className="form">
-            <label> Week Number   
-            </label>
-                <input className="form-input" type='text' onChange={handleWeek} />
             <label> Languages   
             </label>
-                <input className="form-input" type='text' onChange={handleLanguages}/>
+                <input className="form-input" type='text' onChange={handleLanguages} value={language}/>
             <label> Useful link  
             </label>
-                <input className="form-input" type='text' onChange={handleLink}/>
+                <input className="form-input" type='text' onChange={handleLink} value={link}/>
             <label> Summary  
             </label>
-                <textarea className="form-input" type='text' onChange={handleSummary} placeholder='Your summary' />
+                <textarea className="form-input" type='text' onChange={handleSummary} placeholder='Your summary' value={summary} maxlength="50"/>
             <br/>
-            <button onClick={() => onSubmit(week, language, link, summary, setWeek, setLanguage, setLink, setSummary)}>Submit</button>
+            <button onClick={() => onSubmit(language, link, summary, setLanguage, setLink, setSummary)}>Submit</button>
         </div>  
     )
 }

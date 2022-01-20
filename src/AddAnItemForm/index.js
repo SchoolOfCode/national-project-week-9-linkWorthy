@@ -6,7 +6,7 @@ import Inputs from './Inputs';
 function AddAnItemForm({ onSubmit }) {
     return(
             <div className="window">
-                <Inputs onSubmit={onSubmit}/>
+                <Inputs onSubmit={onSubmit} />
             </div>
             
     )
