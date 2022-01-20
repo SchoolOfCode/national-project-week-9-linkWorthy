@@ -35,7 +35,7 @@ function Inputs({ onSubmit }) {
                 <input className="form-input" type='text' onChange={handleLink} value={link}/>
             <label> Summary  
             </label>
-                <textarea className="form-input" type='text' onChange={handleSummary} placeholder='Your summary' value={summary} maxlength="50"/>
+                <textarea className="form-input" type='text' onChange={handleSummary} placeholder='Your summary' value={summary} maxLength="75"/>
             <br/>
             <button onClick={() => onSubmit(language, link, summary, setLanguage, setLink, setSummary)}>Submit</button>
         </div>  
