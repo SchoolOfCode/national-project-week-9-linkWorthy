@@ -1,24 +1,16 @@
-import React from 'react';
-import Posts from '../Posts';
+import React from "react";
+import Posts from "../Posts";
 
-import './weekStyles.css';
-
+import "./weekStyles.css";
 
 function Week() {
-    return(
-       
-        <div className="posts-container">
-            <div className="posts">
-                
-                <Posts />
-            
-                
-            </div>
-
-        </div>   
-
-       
-    )
+	return (
+		<div className="posts-container">
+			<div className="posts">
+				<Posts />
+			</div>
+		</div>
+	);
 }
 
 export default Week;

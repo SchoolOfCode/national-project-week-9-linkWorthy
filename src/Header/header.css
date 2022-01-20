@@ -1,27 +1,36 @@
-
-
 .header {
-    grid-area: header;
-    /* border-top: 1px solid red; */
-    background: rgb(69, 69, 214);
-
-    display: flex;
+	grid-area: header;
+	background-color: var(--color-one);
+	display: flex;
+	flex-grow: 1;
+	align-items: center;
+	height: fit-content;
 }
-
 .logo {
-    margin: .7em;
-    width: 70px;
+	max-width: auto;
+	max-height: 150px;
+}
+.header-titles {
+	flex: 4 0 600px;
 }
 
-.title {
-    font-family: 'Permanent Marker', cursive;
+h1 {
+	font-family: var(--font-style-1);
+	font-size: calc(2vw + 2em);
+	padding: 2.5%;
+	padding-left: 5%;
+	font-weight: bolder;
+	color: var(--color-two);
+	flex-basis: auto;
 }
 
-.sub-title {
-    font-family: 'Manrope', sans-serif;
+h3 {
+	font-family: var(--font-style-1);
+	font-size: calc(0.8vw + 0.8em);
+	padding-top: 0;
+	padding-bottom: 3%;
+	padding-left: 5%;
+	font-weight: bolder;
+	color: var(--color-two);
+	flex-basis: auto;
 }
-
-.title, .sub-title {
-    margin: .3em 0 0 0;
-}
-
