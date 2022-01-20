@@ -9,17 +9,24 @@ function Post({ isComplete, week, link, tags, summary }) {
 		<div className="post post-grid">
 			<div className="post-header">
 				<Radio isComplete={isComplete} />
-				<h4 className="post-title">?? Title ??</h4>
-				<p className="post-week">week {week}</p>
+				<p className="post-week">
+					<span class="material-icons-outlined material-icons delete-button">
+						clear
+					</span>
+				</p>
 			</div>
 
 			<p className="post-description">
-				Summary:{" "}
+				<p>
+					<span class="material-icons-outlined material-icons">link</span>
+				</p>
 				<a className="post-description-link" href={link}>
 					{summary}
 				</a>
 			</p>
-			<p className="post-tags">Tag: {tags}</p>
+			<p className="post-tags">
+				<span className="tags-span">{tags}</span>
+			</p>
 		</div>
 	);
 }

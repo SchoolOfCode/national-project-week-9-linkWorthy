@@ -31,6 +31,10 @@
 .post-tags {
 	font-size: 0.8em;
 }
+.post-tags {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 
 .post-description-link {
 	text-decoration: none;
@@ -39,4 +43,37 @@
 
 .post-description-link:hover {
 	color: var(--color-one);
+}
+
+.post-description {
+	display: flex;
+	align-items: center;
+	padding-bottom: 10px;
+}
+
+.material-icons {
+	padding-left: 2px;
+	padding-right: 5px;
+	height: 80%;
+	width: 80%;
+}
+.tags-span {
+	background-color: var(--color-four);
+	padding-left: 10px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-right: 10px;
+	border-radius: 16px;
+	text-align: center;
+	color: white;
+}
+
+.tags-span:hover {
+	cursor: pointer;
+	background-color: var(--color-four-hover);
+}
+
+.delete-button:hover {
+	cursor: pointer;
+	color: var(--color-four);
 }

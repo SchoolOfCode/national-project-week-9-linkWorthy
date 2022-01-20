@@ -1,5 +1,5 @@
 import React from "react";
-import "./header.css";
+import "./styles.css";
 import logo from "../pics/logo.png";
 
 function Header() {
@@ -9,7 +9,7 @@ function Header() {
 			<div className="header-titles">
 				<h1 className="title">[our app name]</h1>
 				<h3 className="sub-title">
-					a home for all your school of code bookmarks and musings
+					a home for all your school of code bookmarks
 				</h3>
 			</div>
 		</div>

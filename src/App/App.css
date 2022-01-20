@@ -6,6 +6,7 @@
 	--color-three: #6dfcd2;
 	--color-three-hover: #a8f7df;
 	--color-four: #7c59de;
+	--color-four-hover: #8a71d0;
 	--color-five: #f2f2f2;
 	--color-six: #b2b2b2;
 	--font-style-1: "Poppins", sans-serif;
@@ -34,10 +35,4 @@ body {
 
 .main {
 	grid-area: win;
-}
-
-.mid {
-	display: flex;
-	justify-content: space-between;
-	padding: 5%;
 }
