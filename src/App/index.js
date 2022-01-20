@@ -6,9 +6,10 @@ import Header from "../Header";
 import Sidebar from "../Sidebar";
 import MainTop from "../MainTop";
 import AddPostsButton from "../AddPostsButton";
-// import Posts from '../Posts';
 import AddAnItemForm from '../AddAnItemForm';
 import Posts from "../Posts";
+
+
 
 function App() {
 
@@ -18,15 +19,14 @@ function App() {
 	const [posts, setPosts] = useState({});
 	const [weekId, setWeekId] = useState(0);
 	const [weekTopic, setWeekTopic] = useState('');
+	const [aaif, setAaif] = useState();
+	const [button, setButton] = useState(true);	
 
-	// async function getWeeks() {
-	//   const response = await fetch(`${API_URL}/weeks`);
-	//   const data = await response.json();
-	//   setNewData(data);
-	// }
+	const [rerenderTrigger, setRerenderTrigger] = useState(true);
+	
 
 	useEffect(() => {
-		fetch(`${API_URL}/weeks`)
+		 fetch(`${API_URL}/weeks`)
 			.then((res) => {
 				if (!res.ok) {
 					throw Error("could not fetch the data for for that resourse");
@@ -44,7 +44,6 @@ function App() {
 				setError(err.message);
 			});
 	}, []);
-
 
 
 	useEffect(() => {
@@ -67,18 +66,13 @@ function App() {
 	  })
 	}, [weekId]);
 
-	// getWeeks();
-	// console.log(weekOne);
-
-	// useEffect
+	
 
 //================================There are some Sidebar values =====================================
 	function handleWeekId(id, topic) {
 		setWeekId(id);
 		setWeekTopic(topic);
 	}
-	const [aaif, setAaif] = useState();
-	const [button, setButton] = useState(true);	
 	
 	function handleFormPage() {
 		if(button) {
@@ -86,6 +80,7 @@ function App() {
 			setButton(!button);
 		} else {
 			setAaif();
+			setButton(!button);
 		}
 	}
 
@@ -115,12 +110,12 @@ function App() {
 			  setIsPending(false);
 			  setError(err.message);
 			})
-
 		
 		
 		setLanguage('');
 		setLink('');
 		setSummary('');
+		setRerenderTrigger(!rerenderTrigger);
 	}
 	
 
@@ -128,23 +123,23 @@ function App() {
 		<div className="App">
 			{error && <div>{error}</div>}
 			{isPending && <div>Loading...</div>}
-			{/* {newData && <Post data={newData}/>} */}
-
-      		<Header />
-			  <Sidebar newData={newData} handleWeekId={handleWeekId} />
+      		
+			  <Header />
+			<Sidebar newData={newData} handleWeekId={handleWeekId} />
 			  
-			    <div className="main">
-				  <div className="mid">
-            {/* //Title top left  */}
-					  <MainTop weekId={weekId} weekTopic={weekTopic}/>
-					  <AddPostsButton handleFormPage={handleFormPage} button={button} weekId={weekId}/>
-				  </div>
-				  <Posts posts={posts}/>
-			  		  {aaif}
-          		</div>
-			</div>
-	  );
-  }
+			<div className="main">
+				<div className="mid">
+					<MainTop weekId={weekId} weekTopic={weekTopic}/>
+					<AddPostsButton handleFormPage={handleFormPage} button={button} weekId={weekId}/>
+				</div>
+
+				{aaif}
+				<Posts posts={posts}/>
+          	</div>
+
+		</div>
+	);
+}
 
 
 

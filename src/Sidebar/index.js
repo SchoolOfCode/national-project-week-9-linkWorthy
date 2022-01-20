@@ -1,12 +1,6 @@
 import React from "react";
 import "./sidebar.css";
-// { useState }
-// import {
-//   BrowserRouter as Router,
-// //   Switch,
-// //   Route,
-//   Link
-// } from "react-router-dom";
+
 
 function Sidebar({ newData, handleWeekId }) {
 
