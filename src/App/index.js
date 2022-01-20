@@ -10,14 +10,8 @@ import AddPostsButton from "../AddPostsButton";
 import AddAnItemForm from '../AddAnItemForm';
 import Posts from "../Posts";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
 function App() {
+
 	const [newData, setNewData] = useState({});
 	const [error, setError] = useState(null);
 	const [isPending, setIsPending] = useState(true);
@@ -144,7 +138,7 @@ function App() {
 /* <Sidebar newData={newData} handleWeekId={handleWeekId}/> */
 /* <AddAnItemForm onSubmit={onSubmit}/> */
 /* <Posts posts={posts} /> */
-			
+
 
 //================================There are some AddAnItemForm values =====================================
 //const [newPost, setNewPost] = useState({});
@@ -159,5 +153,4 @@ function App() {
 // 	templatePost ? setNewPost(templatePost) : null;
 // }
 
-			
 export default App;

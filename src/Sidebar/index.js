@@ -9,6 +9,7 @@ import "./sidebar.css";
 // } from "react-router-dom";
 
 function Sidebar({ newData, handleWeekId }) {
+
 	// console.log(newData);
 	// const [focus, setFocus] = useState(false);
 
@@ -28,14 +29,11 @@ function Sidebar({ newData, handleWeekId }) {
             ))}
 		</div>
 	);
-
 }
 export default Sidebar;
-
 
 /* <Router>
             
      <Link to='/weeks/1' className={!focus ? "link-week": "link-active"} onClick={focusLink}>Week 1 - Foundation</Link> 
      <Link to='/weeks/3' className="link-week">Week 3 - Front End</Link>
   </Router> */
-
