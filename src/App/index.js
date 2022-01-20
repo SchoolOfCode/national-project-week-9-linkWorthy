@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-// import { API_URL } from "../Config";
+import { API_URL } from "../Config";
 
 import Header from "../Header";
-// import Sidebar from "../Sidebar";
+import Sidebar from "../Sidebar";
+import MainTop from "../MainTop";
+import AddPostsButton from "../AddPostsButton";
 // import Posts from '../Posts';
 // import AddAnItemForm from '../AddAnItemForm';
 import Posts from "../Posts";
@@ -16,7 +18,6 @@ import Posts from "../Posts";
 // } from "react-router-dom";
 
 function App() {
-	/*  
 	const [newData, setNewData] = useState({});
 	const [error, setError] = useState(null);
 	const [isPending, setIsPending] = useState(true);
@@ -52,7 +53,6 @@ function App() {
 
 	console.log(newData);
 
-	
 
 	// useEffect(() => {
 	//   fetch(`${API_URL}/weeks/${weekId}`)
@@ -85,24 +85,32 @@ function App() {
 // }
 		
 
-
-
 	return (
 		<div className="App">
-			{/* {error && <div>{error}</div>}
-			{isPending && <div>Loading...</div>} */}
+			{error && <div>{error}</div>}
+			{isPending && <div>Loading...</div>}
 			{/* {newData && <Post data={newData}/>} */}
 
-			// <Header />
+      <Header />
+			  {/* <Sidebar /> */}
+			  <Sidebar newData={newData} />
+			  {/* <AddAnItemForm /> */}
+			  <div className="main">
+				  <div className="mid">
+					  <MainTop />
+            //Title top left
+					  <AddPostsButton />
+				  </div>
+				  <Posts />
+          </div>
+        </div>
+	  );
+  }
 
-			{/* <Sidebar newData={newData} handleWeekId={handleWeekId}/> */}
-
-			{/* <AddAnItemForm onSubmit={onSubmit}/> */}
-			{/* <Posts posts={posts} /> */}
-			// <Posts />
-		// </div>
-	// );
-// }
+{/* <Sidebar newData={newData} handleWeekId={handleWeekId}/> */}
+{/* <AddAnItemForm onSubmit={onSubmit}/> */}
+{/* <Posts posts={posts} /> */}
+			
 
 //================================There are some AddAnItemForm values =====================================
 //const [newPost, setNewPost] = useState({});
@@ -117,5 +125,5 @@ function App() {
 // 	templatePost ? setNewPost(templatePost) : null;
 // }
 
-
+			
 export default App;
