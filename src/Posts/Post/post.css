@@ -1,13 +1,18 @@
 .post {
+	flex-basis: auto;
 	height: auto;
 	min-width: 30%;
-	margin: 2em;
+	/* margin: 2em; */
 	padding: 0.8em;
 	background-color: var(--color-five);
 	border-radius: 8px;
 	/* cursor: pointer; */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	transition: 0.3s;
+	font-family: var(--font-style-2);
+	color: black;
+	font-weight: 400;
+	flex: 0 1 0px;
 }
 
 .post:hover {
@@ -25,4 +30,13 @@
 .post-week,
 .post-tags {
 	font-size: 0.8em;
+}
+
+.post-description-link {
+	text-decoration: none;
+	color: black;
+}
+
+.post-description-link:hover {
+	color: var(--color-one);
 }
