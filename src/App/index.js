@@ -7,13 +7,13 @@ import Sidebar from "../Sidebar";
 import SubHeading from "../SubHeading";
 import AddPostsButton from "../AddPostsButton";
 import AddAnItemForm from "../AddAnItemForm";
-import Posts from "../Posts";
+import ResourcesList from "../ResourcesList";
 
 function App() {
 	const [weeks, setWeeks] = useState([]);
 	const [error, setError] = useState(null);
 	const [isPending, setIsPending] = useState(true);
-	const [posts, setPosts] = useState({});
+	const [posts, setPosts] = useState([]);
 	const [weekId, setWeekId] = useState(0);
 	const [weekTopic, setWeekTopic] = useState("");
 
@@ -144,7 +144,7 @@ function App() {
 						weekId={weekId}
 					/>
 				</div>
-				<Posts posts={posts} />
+				<ResourcesList posts={posts} />
 				{aaif}
 			</div>
 		</div>

@@ -9,12 +9,4 @@ function SubHeading({ weekId, weekTopic }) {
 		</div>
 	);
 }
-
 export default SubHeading;
-
-// {if(!weekId || !weekTopic) {
-// 	<div >
-// 	<h2 style={{display: none;}}>WEEK {weekId}</h2>
-// 	<p className="topic-title">{weekTopic}</p>
-// 	</div>
-// }}
