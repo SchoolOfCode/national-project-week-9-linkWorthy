@@ -3,13 +3,20 @@ import './addAnItemForm.css';
 
 import Inputs from './Inputs';
 
-function AddAnItemForm({ onSubmit }) {
-    return(
-            <div className="window">
-                <Inputs onSubmit={onSubmit} />
+function AddAnItemForm({ onSubmit, showModal, setShowModal }) {
+    if (showModal) {
+        return(
+            <div className="window-modal">
+                <div className="window">
+                    <span class="close" onClick={() => setShowModal(false)}>&times;</span>
+                    <h2 className="window-title">Create a post</h2>
+                    <Inputs onSubmit={onSubmit} />
+                </div>
             </div>
-            
-    )
+        )
+    }
+
+    return null
 }
 
 export default AddAnItemForm;

@@ -36,3 +36,10 @@ body {
 .main {
 	grid-area: win;
 }
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+.mid {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5% 5% 20px 5%;
+}

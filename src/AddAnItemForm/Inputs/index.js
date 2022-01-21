@@ -26,7 +26,7 @@ function Inputs({ onSubmit }) {
 		<div className="form">
 			{/* <label> Summary</label> */}
 			<textarea
-				className="form-input fi-desc"
+				className="form-textarea"
 				type="text"
 				onChange={handleSummary}
 				placeholder="Enter a short description of your bookmark"
@@ -51,7 +51,7 @@ function Inputs({ onSubmit }) {
 			/>
 			<br />
 			<button
-				className="submit-button"
+				className="form-submit-button"
 				onClick={() =>
 					onSubmit(language, link, summary, setLanguage, setLink, setSummary)
 				}
