@@ -4,8 +4,33 @@
 
     font-family: 'Manrope', sans-serif;
     font-size: .8em;
+    width: 300px;
+    margin-bottom: 50px;
 }
 
 .form-input {
+    height: 24px;
+    border-radius: 6px;
+    border: 1px solid black;
+    padding: 0 8px;
+    margin: .2em 0 1em 0;
+}
+
+.form-textarea {
+    height: 90px;
+    border-radius: 6px;
+    border: 1px solid black;
+    padding: 8px;
     margin: .2em 0 .5em 0;
+}
+
+.form-submit-btn {
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.form-submit-btn:hover {
+    background-color: var(--color-three);
 }

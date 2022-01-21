@@ -6,7 +6,7 @@ import Radio from "../Radio";
 
 function Post({ isComplete, week, link, tags, summary }) {
 	return (
-		<div className="post post-grid">
+		<div className="post">
 			<div className="post-header">
 				<Radio isComplete={isComplete} />
 				<h4 className="post-title">?? Title ??</h4>
@@ -14,7 +14,7 @@ function Post({ isComplete, week, link, tags, summary }) {
 			</div>
 
 			<p className="post-description">
-				Summary:{" "}
+			<i class="fas fa-link link-icon"></i>{" "}
 				<a className="post-description-link" href={link}>
 					{summary}
 				</a>

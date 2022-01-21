@@ -11,6 +11,7 @@ function Header() {
 				<h3 className="sub-title">
 					a home for all your school of code bookmarks and musings
 				</h3>
+				<a href="#sidebar" className="get-started-btn">Get started</a>
 			</div>
 		</div>
 	);

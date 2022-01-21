@@ -20,7 +20,7 @@ function Sidebar({ newData, handleWeekId }) {
 	// let week = newData.map(week => <Link key={week.id} to={`/week${week.id}`} className={!focus ? "link-week": "link-active"} onClick={focusLink}>`Week ${week.id} - ${week.topic}`</Link>);
 
 	return (
-		<div className="sidebar">
+		<div className="sidebar" id="sidebar">
 			{Object.values(newData).map((week) => (
 				<div key={week.id} className="week-div" onClick={() => handleWeekId(week.id, week.topic)}>
 					<p className="link-week">WEEK {week.id}</p>

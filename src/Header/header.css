@@ -4,7 +4,7 @@
 	display: flex;
 	flex-grow: 1;
 	align-items: center;
-	height: fit-content;
+	height: 100vh;
 }
 .logo {
 	max-width: auto;
@@ -33,4 +33,19 @@ h3 {
 	font-weight: bolder;
 	color: var(--color-two);
 	flex-basis: auto;
+}
+
+.get-started-btn {
+	display: block;
+	color: black;
+    font-weight: bold;
+    text-align: center;
+	text-decoration: none;
+    line-height: 25px;
+    width: 115px;
+    height: 25px;
+    background-color: var(--color-three);
+    border-radius: 5px;
+    padding: 10px;
+	margin-left: 5%;
 }

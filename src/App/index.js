@@ -18,6 +18,8 @@ function App() {
 	const [posts, setPosts] = useState({});
 	const [weekId, setWeekId] = useState(0);
 	const [weekTopic, setWeekTopic] = useState('');
+	
+	const [showAAIFModal, setShowAAIFModal] = useState(false);
 
 	// async function getWeeks() {
 	//   const response = await fetch(`${API_URL}/weeks`);
@@ -77,17 +79,6 @@ function App() {
 		setWeekId(id);
 		setWeekTopic(topic);
 	}
-	const [aaif, setAaif] = useState();
-	const [button, setButton] = useState(true);	
-	
-	function handleFormPage() {
-		if(button) {
-			setAaif(<AddAnItemForm onSubmit={onSubmit} button={button}/>);
-			setButton(!button);
-		} else {
-			setAaif();
-		}
-	}
 
 	function onSubmit(language, link, summary, setLanguage, setLink, setSummary) {
 		const templatePost = {
@@ -96,8 +87,6 @@ function App() {
 			"link": link,
 			"isComplete": false
 			}
-			
-			setAaif();
 			
 			fetch(`${API_URL}/weeks/${weekId}/resources`, {
 				method: "POST",
@@ -137,17 +126,14 @@ function App() {
 				  <div className="mid">
             {/* //Title top left  */}
 					  <MainTop weekId={weekId} weekTopic={weekTopic}/>
-					  <AddPostsButton handleFormPage={handleFormPage} button={button} weekId={weekId}/>
+					  <AddPostsButton handleFormPage={() => setShowAAIFModal(true)} weekId={weekId}/>
 				  </div>
 				  <Posts posts={posts}/>
-			  		  {aaif}
+				  <AddAnItemForm onSubmit={onSubmit} showModal={showAAIFModal} setShowModal={setShowAAIFModal}/>
           		</div>
 			</div>
 	  );
   }
-
-
-
 
 
 export default App;
