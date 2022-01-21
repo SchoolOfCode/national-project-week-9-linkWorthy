@@ -11,10 +11,17 @@
 	padding-bottom: 8px;
 	padding-left: 4px;
 	padding-right: 4px;
-	font-family: var(--font-style-1);
-	font-weight: bold;
+	font-family: var(--font-style-2);
 	font-size: calc(0.6vw + 0.5em);
 	text-decoration: none;
+}
+
+.link-week {
+	font-weight: bolder;
+}
+
+.link-topic {
+	padding-bottom: 5%;
 }
 
 .week-div:hover {

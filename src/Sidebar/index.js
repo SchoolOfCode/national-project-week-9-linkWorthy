@@ -28,6 +28,7 @@ function Sidebar({ newData, handleWeekId }) {
 				>
 					<p className="link-week">WEEK {week.id}</p>
 					<p className="link-topic">{week.topic}</p>
+					<hr />
 				</div>
 			))}
 		</div>
