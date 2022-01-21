@@ -20,6 +20,7 @@ function App() {
 	const [weekTopic, setWeekTopic] = useState("");
 	// const [trigger, setTrigger] = useState(true);
 
+	const [showAAIFModal, setShowAAIFModal] = useState(false);
 	// async function getWeeks() {
 	//   const response = await fetch(`${API_URL}/weeks`);
 	//   const data = await response.json();
@@ -83,17 +84,17 @@ function App() {
 		setWeekTopic(topic);
 	}
 	const [aaif, setAaif] = useState();
-	const [button, setButton] = useState(true);
+	// const [button, setButton] = useState(true);
 
-	function handleFormPage() {
-		if (button) {
-			setAaif(<AddAnItemForm onSubmit={onSubmit} button={button} />);
-			setButton(!button);
-		} else {
-			setAaif();
-			setButton(!button);
-		}
-	}
+	// function handleFormPage() {
+	// 	if (button) {
+	// 		setAaif(<AddAnItemForm onSubmit={onSubmit} button={button} />);
+	// 		setButton(!button);
+	// 	} else {
+	// 		setAaif();
+	// 		setButton(!button);
+	// 	}
+	// }
 
 //===================================== Delete Handler ===========================================
 
@@ -190,13 +191,14 @@ function App() {
 					<SubHeading weekId={weekId} weekTopic={weekTopic} />
 					{aaif}
 					<AddPostsButton
-						handleFormPage={handleFormPage}
-						button={button}
+						handleFormPage={() => setShowAAIFModal(true)}
+						// button={button}
 						weekId={weekId}
 					/>
 				</div>
 				
 				<Posts posts={posts} handleDelete={handleDelete} />
+				<AddAnItemForm onSubmit={onSubmit} showModal={showAAIFModal} setShowModal={setShowAAIFModal}/>
 			</div>
 		</div>
 	);
