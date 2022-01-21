@@ -13,10 +13,12 @@ import Posts from "../Posts";
 function App() {
 	const [newData, setNewData] = useState({});
 	const [error, setError] = useState(null);
+	const [status, setStatus] = useState('');
 	const [isPending, setIsPending] = useState(true);
 	const [posts, setPosts] = useState({});
 	const [weekId, setWeekId] = useState(0);
 	const [weekTopic, setWeekTopic] = useState("");
+	// const [trigger, setTrigger] = useState(true);
 
 	// async function getWeeks() {
 	//   const response = await fetch(`${API_URL}/weeks`);
@@ -25,43 +27,49 @@ function App() {
 	// }
 
 	useEffect(() => {
-		fetch(`${API_URL}/weeks`)
-			.then((res) => {
-				if (!res.ok) {
-					throw Error("could not fetch the data for for that resourse");
-				}
-				return res.json();
-			})
-			.then((data) => {
-				setIsPending(false);
-				setNewData(data.payload);
-				setError(null);
-			})
-			.catch((err) => {
-				//auto catches network / connection error
-				setIsPending(false);
-				setError(err.message);
-			});
+		async function getWeeks() {
+			await fetch(`${API_URL}/weeks`)
+				.then((res) => {
+					if (!res.ok) {
+						throw Error("could not fetch the data for for that resourse");
+					}
+					return res.json();
+				})
+				.then((data) => {
+					setIsPending(false);
+					setNewData(data.payload);
+					setError(null);
+				})
+				.catch((err) => {
+					//auto catches network / connection error
+					setIsPending(false);
+					setError(err.message);
+				})
+		}
+		getWeeks();
 	}, []);
 
 	useEffect(() => {
-		fetch(`${API_URL}/weeks/${weekId}/resources`)
-			.then((res) => {
-				if (!res.ok) {
-					throw Error("could not fetch the data for for that resourse");
-				}
-				return res.json();
-			})
-			.then((data) => {
-				setIsPending(false);
-				setPosts(data.payload);
-				setError(null);
-			})
-			.catch((err) => {
-				//auto catches network / connection error
-				setIsPending(false);
-				setError(err.message);
-			});
+		async function getPosts() {
+			await fetch(`${API_URL}/weeks/${weekId}/resources`)
+				.then((res) => {
+					if (!res.ok) {
+						throw Error("could not fetch the data for for that resourse");
+					}
+					return res.json();
+				})
+				.then((data) => {
+					setIsPending(false);
+					setPosts(data.payload);
+					setError(null);
+				})
+				.catch((err) => {
+					//auto catches network / connection error
+					setIsPending(false);
+					setError(err.message);
+				});
+		}
+		getPosts();
 	}, [weekId]);
 
 	// getWeeks();
@@ -69,7 +77,7 @@ function App() {
 
 	// useEffect
 
-	//================================There are some Sidebar values =====================================
+	//================================ There are some Sidebar values =====================================
 	function handleWeekId(id, topic) {
 		setWeekId(id);
 		setWeekTopic(topic);
@@ -83,8 +91,23 @@ function App() {
 			setButton(!button);
 		} else {
 			setAaif();
+			setButton(!button);
 		}
 	}
+
+//===================================== Delete Handler ===========================================
+
+	async function handleDelete( id, week ) {
+		
+		await fetch(`${API_URL}/weeks/${week}/resources/${id}`, {
+			method: "DELETE"
+		})
+		setStatus('Delete successful!');
+
+		const updatedPosts = posts.filter(post => post.id !== id);
+		setPosts(updatedPosts);
+	}
+	console.log(status);
 
 	// [START] TEMPORARY FIX TO RENEDER WEEK 1 ON MOUNT
 	useEffect(() => {
@@ -119,14 +142,17 @@ function App() {
 			link: link,
 			isComplete: false,
 		};
-
+		//===========================================
+		// setTrigger(!trigger);
+		//===========================================
 		setAaif();
 
+		
 		fetch(`${API_URL}/weeks/${weekId}/resources`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(templatePost),
-		})
+		}) 
 			.then((res) => {
 				if (!res.ok) {
 					throw Error("could not fetch the data for for that resourse");
@@ -142,7 +168,12 @@ function App() {
 		setLanguage("");
 		setLink("");
 		setSummary("");
+
 	}
+	
+	console.log(posts);
+
+
 
 	return (
 		<div className="App">
@@ -157,14 +188,15 @@ function App() {
 				<div className="mid">
 					{/* //Title top left  */}
 					<SubHeading weekId={weekId} weekTopic={weekTopic} />
+					{aaif}
 					<AddPostsButton
 						handleFormPage={handleFormPage}
 						button={button}
 						weekId={weekId}
 					/>
 				</div>
-				<Posts posts={posts} />
-				{aaif}
+				
+				<Posts posts={posts} handleDelete={handleDelete} />
 			</div>
 		</div>
 	);
