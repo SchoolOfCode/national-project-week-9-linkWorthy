@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;600&display=swap");
 
-/* .mid {
-	display: flex;
-	justify-content: space-between;
-	padding: 5%;
-} */
-
 h2 {
 	font-family: var(--font-style-1);
 	font-size: calc(1.8vw + 1em);
@@ -25,8 +19,5 @@ h2 {
 	flex-basis: auto;
 	letter-spacing: 5px;
 	width: 300px;
+	white-space: nowrap;
 }
-
-/* .subHead {
-	width: 35%;
-} */

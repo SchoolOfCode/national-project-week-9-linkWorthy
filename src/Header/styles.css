@@ -5,6 +5,7 @@
 	flex-grow: 1;
 	align-items: center;
 	height: 100vh;
+	padding-left: 5%;
 }
 .logo {
 	max-width: auto;
@@ -39,14 +40,18 @@
 .get-started-btn {
 	display: block;
 	color: black;
-    font-weight: bold;
-    text-align: center;
+	font-weight: bold;
+	font-family: var(--font-style-1);
+	text-align: center;
 	text-decoration: none;
-    line-height: 25px;
-    width: 115px;
-    height: 25px;
-    background-color: var(--color-three);
-    border-radius: 5px;
-    padding: 10px;
+	line-height: 25px;
+	width: 115px;
+	height: 25px;
+	background-color: var(--color-three);
+	border-radius: 45px;
+	padding: 10px;
 	margin-left: 5%;
+}
+.get-started-btn:hover {
+	background-color: var(--color-three-hover);
 }

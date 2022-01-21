@@ -26,7 +26,7 @@ function Inputs({ onSubmit }) {
 		<div className="form">
 			{/* <label> Summary</label> */}
 			<textarea
-				className="form-textarea"
+				className="form-textarea form-input"
 				type="text"
 				onChange={handleSummary}
 				placeholder="Enter a short description of your bookmark"
