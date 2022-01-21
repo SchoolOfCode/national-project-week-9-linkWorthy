@@ -1,14 +1,18 @@
 import React from "react";
 import "./styles.css";
-import WeekItem from "../Week";
+import WeekItem from "../WeekItem";
 
-function Sidebar({ weeks, handleWeekId }) {
+function Sidebar({ weeks, handleWeekRender }) {
 	return (
 		<div className="sidebar">
 			<div>
 				{weeks.map(function (week) {
 					return (
-						<WeekItem {...week} key={week.id} handleWeekId={handleWeekId} />
+						<WeekItem
+							{...week}
+							key={week.id}
+							handleWeekRender={handleWeekRender}
+						/>
 					);
 				})}
 			</div>

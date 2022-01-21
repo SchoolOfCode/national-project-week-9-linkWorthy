@@ -57,7 +57,7 @@ function App() {
 			});
 	}, [weekId]);
 	//================================There are some Sidebar values =====================================
-	function handleWeekId(id, topic) {
+	function handleWeekRender(id, topic) {
 		setWeekId(id);
 		setWeekTopic(topic);
 	}
@@ -75,7 +75,7 @@ function App() {
 
 	// [START] TEMPORARY FIX TO RENEDER WEEK 1 ON MOUNT
 	useEffect(() => {
-		handleWeekId(1, "Foundations");
+		handleWeekRender(1, "Foundations");
 	}, []);
 
 	useEffect(() => {
@@ -132,7 +132,7 @@ function App() {
 			{isPending && <div>Loading...</div>}
 
 			<Header />
-			<Sidebar weeks={weeks} handleWeekId={handleWeekId} />
+			<Sidebar weeks={weeks} handleWeekRender={handleWeekRender} />
 
 			<div className="main">
 				<div className="mid">

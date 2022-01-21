@@ -1,8 +1,8 @@
 import React from "react";
 
-function WeekItem({ id, topic, handleWeekId }) {
+function WeekItem({ id, topic, handleWeekRender }) {
 	return (
-		<div className="week-div" onClick={() => handleWeekId(id, topic)}>
+		<div className="week-div" onClick={() => handleWeekRender(id, topic)}>
 			<p className="link-week">WEEK {id}</p>
 			<p className="link-topic">{topic}</p>
 		</div>
