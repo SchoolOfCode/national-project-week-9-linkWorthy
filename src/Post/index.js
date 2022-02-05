@@ -1,16 +1,19 @@
 import React from "react";
-import "./post.css";
 import CompletionButton from "../CompletionButton";
+import "./styles.css";
 
 // { posts }
 
-function Post({ isComplete, week, link, tags, summary }) {
+function Post({ id, isComplete, week, link, tags, summary, handleDelete }) {
 	return (
 		<div className="post post-grid">
 			<div className="post-header">
 				<CompletionButton isComplete={isComplete} />
 				<p className="post-week">
-					<span className="material-icons-outlined material-icons delete-button">
+					<span
+						className="material-icons-outlined material-icons delete-button"
+						onClick={() => handleDelete(id, week)}
+					>
 						clear
 					</span>
 				</p>
@@ -39,18 +42,3 @@ function Post({ isComplete, week, link, tags, summary }) {
 }
 
 export default Post;
-
-//=================================== Some Info to Create Posts ========================================
-
-// <div className="post post-grid">
-// 			<div className="post-header">
-// 				{/* <Radio /> */}
-// 				<h4 className="post-title">
-// 					<span className="material-icons">check_circle</span>Title
-// 				</h4>
-// 				<p className="post-week">week 1</p>
-// 			</div>
-// 			<p className="post-description">Description</p>
-// 			<p className="post-links">Links</p>
-// 			<p className="post-tags">Tag</p>
-// 		</div>
