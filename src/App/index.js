@@ -11,11 +11,11 @@ import AddAnItemForm from "../AddAnItemForm";
 import Posts from "../Posts";
 
 function App() {
-	const [newData, setNewData] = useState({});
+	const [newData, setNewData] = useState([]);
 	const [error, setError] = useState(null);
-	const [status, setStatus] = useState('');
+	const [status, setStatus] = useState("");
 	const [isPending, setIsPending] = useState(true);
-	const [posts, setPosts] = useState({});
+	const [posts, setPosts] = useState([]);
 	const [weekId, setWeekId] = useState(0);
 	const [weekTopic, setWeekTopic] = useState("");
 	// const [trigger, setTrigger] = useState(true);
@@ -45,7 +45,7 @@ function App() {
 					//auto catches network / connection error
 					setIsPending(false);
 					setError(err.message);
-				})
+				});
 		}
 		getWeeks();
 	}, []);
@@ -96,16 +96,15 @@ function App() {
 	// 	}
 	// }
 
-//===================================== Delete Handler ===========================================
+	//===================================== Delete Handler ===========================================
 
-	async function handleDelete( id, week ) {
-		
+	async function handleDelete(id, week) {
 		await fetch(`${API_URL}/weeks/${week}/resources/${id}`, {
-			method: "DELETE"
-		})
-		setStatus('Delete successful!');
+			method: "DELETE",
+		});
+		setStatus("Delete successful!");
 
-		const updatedPosts = posts.filter(post => post.id !== id);
+		const updatedPosts = posts.filter((post) => post.id !== id);
 		setPosts(updatedPosts);
 	}
 	console.log(status);
@@ -148,12 +147,11 @@ function App() {
 		//===========================================
 		setAaif();
 
-		
 		fetch(`${API_URL}/weeks/${weekId}/resources`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(templatePost),
-		}) 
+		})
 			.then((res) => {
 				if (!res.ok) {
 					throw Error("could not fetch the data for for that resourse");
@@ -169,12 +167,9 @@ function App() {
 		setLanguage("");
 		setLink("");
 		setSummary("");
-
 	}
-	
+
 	console.log(posts);
-
-
 
 	return (
 		<div className="App">
@@ -196,9 +191,13 @@ function App() {
 						weekId={weekId}
 					/>
 				</div>
-				
+
 				<Posts posts={posts} handleDelete={handleDelete} />
-				<AddAnItemForm onSubmit={onSubmit} showModal={showAAIFModal} setShowModal={setShowAAIFModal}/>
+				<AddAnItemForm
+					onSubmit={onSubmit}
+					showModal={showAAIFModal}
+					setShowModal={setShowAAIFModal}
+				/>
 			</div>
 		</div>
 	);

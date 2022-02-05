@@ -20,7 +20,7 @@ function Sidebar({ newData, handleWeekId }) {
 
 	return (
 		<div className="sidebar" id="sidebar">
-			{Object.values(newData).map((week) => (
+			{newData.map((week) => (
 				<div
 					key={week.id}
 					className="week-div"

@@ -5,16 +5,16 @@ import "./styles.css";
 function Posts({ posts, handleDelete }) {
 	return (
 		<div className="posts">
-			{Object.values(posts).map((card, index) => (
+			{posts.map((card, index) => (
 				<Post
 					key={index}
-                    id={card.id}
+					id={card.id}
 					isComplete={card.iscomplete}
 					week={card.week}
 					link={card.link}
 					tags={card.tags}
 					summary={card.summary}
-                    handleDelete={handleDelete}
+					handleDelete={handleDelete}
 				/>
 			))}
 		</div>
