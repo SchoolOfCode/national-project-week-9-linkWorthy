@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./inputs.css";
+import "./styles.css";
 
 function Inputs({ onSubmit }) {
 	const [language, setLanguage] = useState("");

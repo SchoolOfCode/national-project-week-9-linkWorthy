@@ -1,7 +1,7 @@
 import React from "react";
-import "./addAnItemForm.css";
+import "./styles.css";
 
-import Inputs from "./Inputs";
+import Inputs from "../Inputs";
 
 function AddAnItemForm({ onSubmit, showModal, setShowModal }) {
 	if (showModal) {
