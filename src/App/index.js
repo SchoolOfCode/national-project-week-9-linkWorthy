@@ -11,7 +11,7 @@ import AddAnItemForm from "../AddAnItemForm";
 import Posts from "../Posts";
 
 function App() {
-	const [newData, setNewData] = useState([]);
+	const [weeks, setWeeks] = useState([]);
 	const [error, setError] = useState(null);
 	const [status, setStatus] = useState("");
 	const [isPending, setIsPending] = useState(true);
@@ -38,7 +38,7 @@ function App() {
 				})
 				.then((data) => {
 					setIsPending(false);
-					setNewData(data.payload);
+					setWeeks(data.payload);
 					setError(null);
 				})
 				.catch((err) => {
@@ -178,7 +178,7 @@ function App() {
 			{/* {newData && <Post data={newData}/>} */}
 
 			<Header />
-			<Sidebar newData={newData} handleWeekId={handleWeekId} />
+			<Sidebar weeks={weeks} handleWeekId={handleWeekId} />
 
 			<div className="main">
 				<div className="mid">

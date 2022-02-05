@@ -8,7 +8,7 @@ import "./styles.css";
 //   Link
 // } from "react-router-dom";
 
-function Sidebar({ newData, handleWeekId }) {
+function Sidebar({ weeks, handleWeekId }) {
 	// console.log(newData);
 	// const [focus, setFocus] = useState(false);
 
@@ -20,7 +20,7 @@ function Sidebar({ newData, handleWeekId }) {
 
 	return (
 		<div className="sidebar" id="sidebar">
-			{newData.map((week) => (
+			{weeks.map((week) => (
 				<div
 					key={week.id}
 					className="week-div"
