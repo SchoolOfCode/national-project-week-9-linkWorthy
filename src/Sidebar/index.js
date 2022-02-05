@@ -1,4 +1,5 @@
 import React from "react";
+import WeeksList from "../WeeksList";
 import "./styles.css";
 // { useState }
 // import {
@@ -20,17 +21,7 @@ function Sidebar({ weeks, handleWeekId }) {
 
 	return (
 		<div className="sidebar" id="sidebar">
-			{weeks.map((week) => (
-				<div
-					key={week.id}
-					className="week-div"
-					onClick={() => handleWeekId(week.id, week.topic)}
-				>
-					<p className="link-week">WEEK {week.id}</p>
-					<p className="link-topic">{week.topic}</p>
-					<hr />
-				</div>
-			))}
+			<WeeksList weeks={weeks} handleWeekId={handleWeekId} />
 		</div>
 	);
 }
