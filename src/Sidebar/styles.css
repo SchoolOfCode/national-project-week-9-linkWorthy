@@ -1,9 +1,9 @@
 .sidebar {
-	grid-area: sidebar;
-	background-color: var(--color-five);
-	height: 100%;
-	padding: 10%;
-	text-align: center;
+  grid-area: sidebar;
+  background-color: var(--color-five);
+  height: 100%;
+  padding: 10%;
+  text-align: center;
 }
 
 /* 

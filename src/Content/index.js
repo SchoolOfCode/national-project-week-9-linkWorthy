@@ -4,6 +4,8 @@ import { API_URL } from "../Config";
 
 //import Header from "../Header";
 import Sidebar from "../Sidebar";
+import useLocalStorage from "use-local-storage";
+import DarkLightSwitch from "../DarkLightSwitch";
 import SubHeading from "../SubHeading";
 import AddPostsButton from "../AddPostsButton";
 // import Posts from '../Posts';
@@ -21,6 +23,11 @@ function Content() {
   // const [trigger, setTrigger] = useState(true);
 
   const [showAAIFModal, setShowAAIFModal] = useState(false);
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
   // async function getWeeks() {
   //   const response = await fetch(`${API_URL}/weeks`);
   //   const data = await response.json();
@@ -171,8 +178,17 @@ function Content() {
 
   console.log(posts);
 
+  function switchTheme() {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  }
+
+  useEffect(() => {
+    document.body.dataset.theme = theme;
+  }, [theme]);
+
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
       {error && <div>{error}</div>}
       {isPending && <div>Loading...</div>}
       {/* {newData && <Post data={newData}/>} */}
@@ -182,9 +198,11 @@ function Content() {
       {/* <Header /> */}
 
       {/* /---------------------------------Header End---------------------------------/ */}
-      <Sidebar weeks={weeks} handleWeekId={handleWeekId} />
+      <Sidebar weeks={weeks} handleWeekId={handleWeekId} theme={theme} />
 
       <div className="main">
+        <DarkLightSwitch onClick={switchTheme} />
+
         <div className="mid">
           {/* //Title top left  */}
           <SubHeading weekId={weekId} weekTopic={weekTopic} />

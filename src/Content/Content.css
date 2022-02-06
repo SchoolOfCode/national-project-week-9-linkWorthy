@@ -11,6 +11,14 @@
   --color-six: #b2b2b2;
   --font-style-1: "Poppins", sans-serif;
   --font-style-2: sans-serif;
+  --background: white;
+  --text-primary: black;
+}
+
+[data-theme="dark"] {
+  --background: black;
+  --text-primary: white;
+  --color-five: #7de2d1;
 }
 
 * {
@@ -28,9 +36,10 @@
   grid-template-areas:
     "header header"
     "sidebar win";
+  background: var(--background);
 }
 body {
-  background: white;
+  background: var(--background);
 }
 
 .main {
