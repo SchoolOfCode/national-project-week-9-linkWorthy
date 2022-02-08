@@ -14,6 +14,7 @@
 	font-weight: 400;
 	flex: 0 1 0px;
 	word-wrap: break-word;
+	color: var(--text-primary);
 }
 
 .post:hover {
@@ -39,7 +40,7 @@
 
 .post-description-link {
 	text-decoration: none;
-	color: black;
+	color: var(--text-primary);
 	word-wrap: break-word;
 }
 .word-wrap {
@@ -71,7 +72,7 @@
 	padding-right: 10px;
 	border-radius: 16px;
 	text-align: center;
-	color: white;
+	color: var(--text-secondary);
 }
 
 .tags-span:hover {
