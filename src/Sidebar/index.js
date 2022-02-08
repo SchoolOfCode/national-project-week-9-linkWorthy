@@ -9,21 +9,21 @@ import "./styles.css";
 //   Link
 // } from "react-router-dom";
 
-function Sidebar({ weeks, handleWeekId }) {
-	// console.log(newData);
-	// const [focus, setFocus] = useState(false);
+function Sidebar({ weeks, handleWeekId, theme }) {
+  // console.log(newData);
+  // const [focus, setFocus] = useState(false);
 
-	// function focusLink() {
-	// 	setFocus(!focus);
-	// }
+  // function focusLink() {
+  // 	setFocus(!focus);
+  // }
 
-	// let week = newData.map(week => <Link key={week.id} to={`/week${week.id}`} className={!focus ? "link-week": "link-active"} onClick={focusLink}>`Week ${week.id} - ${week.topic}`</Link>);
+  // let week = newData.map(week => <Link key={week.id} to={`/week${week.id}`} className={!focus ? "link-week": "link-active"} onClick={focusLink}>`Week ${week.id} - ${week.topic}`</Link>);
 
-	return (
-		<div className="sidebar" id="sidebar">
-			<WeeksList weeks={weeks} handleWeekId={handleWeekId} />
-		</div>
-	);
+  return (
+    <div className="sidebar" id="sidebar" data-theme={theme}>
+      <WeeksList weeks={weeks} handleWeekId={handleWeekId} />
+    </div>
+  );
 }
 export default Sidebar;
 

@@ -1,18 +1,18 @@
 .posts {
-	font-family: "Manrope", sans-serif;
-	/* width: 80%;
+  font-family: "Manrope", sans-serif;
+  /* width: 80%;
 	min-height: 300px; */
-	/* margin: 0 auto; */
-	align-content: space-around;
-	align-self: center;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	row-gap: 20px;
-	column-gap: 20px;
-	padding-left: 10px;
-	padding-right: 10px;
-	word-wrap: break-word;
+  /* margin: 0 auto; */
+  align-content: space-around;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 20px;
+  column-gap: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  word-wrap: break-word;
 }
 
 /* .posts-container {
@@ -32,17 +32,17 @@
 } */
 
 .add-btn {
-	padding: 1em 1.4em;
-	font-weight: bold;
-	border: 0.5px solid gray;
-	border-radius: 5px;
-	cursor: pointer;
+  padding: 1em 1.4em;
+  font-weight: bold;
+  border: 0.5px solid gray;
+  border-radius: 5px;
+  cursor: pointer;
 
-	background: white;
-	transition: 0.3s;
+  background: white;
+  transition: 0.3s;
 }
 
 .add-btn:hover {
-	background: black;
-	color: white;
+  background: black;
+  color: white;
 }
