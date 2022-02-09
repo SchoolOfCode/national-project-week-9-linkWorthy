@@ -10,6 +10,7 @@ import AddPostsButton from "../AddPostsButton";
 import AddAnItemForm from "../AddAnItemForm";
 import Posts from "../Posts";
 
+
 function App() {
 	const [weeks, setWeeks] = useState([]);
 	const [error, setError] = useState(null);
@@ -18,7 +19,8 @@ function App() {
 	const [posts, setPosts] = useState([]);
 	const [weekId, setWeekId] = useState(0);
 	const [weekTopic, setWeekTopic] = useState("");
-	// const [trigger, setTrigger] = useState(true);
+	// const [template, setTemplate] = useState();
+	// const [trigger, setTrigger] = useState(false);
 
 	const [showAAIFModal, setShowAAIFModal] = useState(false);
 	// async function getWeeks() {
@@ -50,6 +52,8 @@ function App() {
 		getWeeks();
 	}, []);
 
+	
+	
 	useEffect(() => {
 		async function getPosts() {
 			await fetch(`${API_URL}/weeks/${weekId}/resources`)
@@ -73,10 +77,6 @@ function App() {
 		getPosts();
 	}, [weekId]);
 
-	// getWeeks();
-	// console.log(weekOne);
-
-	// useEffect
 
 	//================================ There are some Sidebar values =====================================
 	function handleWeekId(id, topic) {
@@ -142,9 +142,8 @@ function App() {
 			link: link,
 			isComplete: false,
 		};
-		//===========================================
-		// setTrigger(!trigger);
-		//===========================================
+		
+		
 		setAaif();
 
 		fetch(`${API_URL}/weeks/${weekId}/resources`, {
@@ -167,7 +166,30 @@ function App() {
 		setLanguage("");
 		setLink("");
 		setSummary("");
+
+		setTimeout(() => {
+			fetch(`${API_URL}/weeks/${weekId}/resources`)
+				.then((res) => {
+					if (!res.ok) {
+						throw Error("could not fetch the data for for that resourse");
+					}
+					return res.json();
+				})
+				.then((data) => {
+					setIsPending(false);
+					setPosts(data.payload);
+					setError(null);
+				})
+				.catch((err) => {
+					//auto catches network / connection error
+					setIsPending(false);
+					setError(err.message);
+				});
+
+		}, 500)
+
 	}
+
 
 	console.log(posts);
 
@@ -192,7 +214,8 @@ function App() {
 					/>
 				</div>
 
-				<Posts posts={posts} handleDelete={handleDelete} />
+				<Posts 
+					posts={posts} handleDelete={handleDelete} />
 				<AddAnItemForm
 					onSubmit={onSubmit}
 					showModal={showAAIFModal}

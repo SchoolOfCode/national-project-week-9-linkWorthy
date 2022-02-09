@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./styles.css";
 
-function Inputs({ onSubmit }) {
+function Inputs({ onSubmit, setShowModal}) {
 	const [language, setLanguage] = useState("");
 	const [link, setLink] = useState("");
 	const [summary, setSummary] = useState("");
+	// const [trigger, setTrigger] = useState(true);
 
 	function handleLanguages(event) {
 		// event.preventDefault();
@@ -20,6 +21,17 @@ function Inputs({ onSubmit }) {
 		// event.preventDefault();
 		const summary = event.target.value;
 		setSummary(summary);
+	}
+
+	//=============================== DIMA / fix Submit Button - it's closing only when there are link and summary  fields filled
+
+
+	const handleSubmit = () => {
+		if(link && summary) {
+			onSubmit(language, link, summary, setLanguage, setLink, setSummary);
+			setShowModal(false);
+			// setTrigger(!trigger);
+		}
 	}
 
 	return (
@@ -53,7 +65,7 @@ function Inputs({ onSubmit }) {
 			<button
 				className="form-submit-button"
 				onClick={() =>
-					onSubmit(language, link, summary, setLanguage, setLink, setSummary)
+					handleSubmit()
 				}
 			>
 				SUBMIT

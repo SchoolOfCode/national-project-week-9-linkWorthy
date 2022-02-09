@@ -42,4 +42,10 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	padding: 5% 5% 20px 5%;
+	height: 10%;
+
+	position: sticky;
+	top: 0;
+	background: rgba(255, 255, 255, 0.9);
+	
 }
