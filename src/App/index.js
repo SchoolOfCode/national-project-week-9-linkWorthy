@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Header from "../Header/index.js";
-import Content from "../Content/index.js";
+import Header from "../Header";
+import Content from "../Content";
 
 function App() {
   return (

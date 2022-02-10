@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./styles.css";
 
-function Inputs({ onSubmit, setShowModal }) {
-	const [language, setLanguage] = useState("");
-	const [link, setLink] = useState("");
-	const [summary, setSummary] = useState("");
+function EditInputs({ editPost, onEditSubmit, setShowEditModal }) {
+	const [language, setLanguage] = useState(editPost[0].tags);
+	const [link, setLink] = useState(editPost[0].link);
+	const [summary, setSummary] = useState(editPost[0].summary);
+    const postId = editPost[0].id;
 
 	function handleLanguages(event) {
 		const topic = event.target.value;
@@ -19,53 +20,49 @@ function Inputs({ onSubmit, setShowModal }) {
 		setSummary(summary);
 	}
 
-	const handleForm = () => {
+	const handleEditForm = () => {
 		if(summary && link) {
-			onSubmit(language, link, summary, setLanguage, setLink, setSummary);
-			setShowModal(false);
+			onEditSubmit(postId, language, link, summary);
+			setShowEditModal(false);
 		}
 	}
 
+    console.log(editPost[0].summary);
 	return (
 		<div className="form">
-			<label className='requiredLabel'>  * Required</label>
+			<label className='label'><strong> Summary</strong></label>
 			<textarea
 				className="form-textarea form-input"
 				type="text"
 				onChange={handleSummary}
-				placeholder="Enter a short description of your bookmark"
 				value={summary}
 				maxLength="75"
 			/>
-			
-			<label className='requiredLabel'> * Required</label>
+			<label className='label'><strong> Link</strong></label>
 			<input
 				className="form-input"
 				type="text"
-				placeholder="Enter a URL"
 				onChange={handleLink}
 				value={link}
 			/>
-			<label className='requiredLabel'></label>
-			
+			<label className='label'><strong> Languages</strong></label>
 			<input
 				className="form-input"
 				type="text"
 				onChange={handleLanguages}
-				placeholder="Add a tag"
 				value={language}
 			/>
 			<br />
 			<button
 				className="form-submit-button"
 				onClick={() =>
-					handleForm()
+					handleEditForm()
 				}
 			>
-				SUBMIT
+				EDIT
 			</button>
 		</div>
 	);
 }
 
-export default Inputs;
+export default EditInputs;

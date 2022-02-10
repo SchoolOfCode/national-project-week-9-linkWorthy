@@ -10,6 +10,7 @@ import SubHeading from "../SubHeading";
 import AddPostsButton from "../AddPostsButton";
 // import Posts from '../Posts';
 import AddAnItemForm from "../AddAnItemForm";
+import AddAnEditForm from '../AddAnEditForm';
 import Posts from "../Posts";
 
 function Content() {
@@ -20,19 +21,15 @@ function Content() {
   const [posts, setPosts] = useState([]);
   const [weekId, setWeekId] = useState(0);
   const [weekTopic, setWeekTopic] = useState("");
-  // const [trigger, setTrigger] = useState(true);
 
   const [showAAIFModal, setShowAAIFModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",
     defaultDark ? "dark" : "light"
   );
-  // async function getWeeks() {
-  //   const response = await fetch(`${API_URL}/weeks`);
-  //   const data = await response.json();
-  //   setNewData(data);
-  // }
+  
 
   useEffect(() => {
     async function getWeeks() {
@@ -110,11 +107,11 @@ function Content() {
       method: "DELETE",
     });
     setStatus("Delete successful!");
-
+    console.log(status);
     const updatedPosts = posts.filter((post) => post.id !== id);
     setPosts(updatedPosts);
   }
-  console.log(status);
+  // console.log(status);
 
   // [START] TEMPORARY FIX TO RENEDER WEEK 1 ON MOUNT
   useEffect(() => {
@@ -174,15 +171,94 @@ function Content() {
     setLanguage("");
     setLink("");
     setSummary("");
+
+    setTimeout(() => {
+      fetch(`${API_URL}/weeks/${weekId}/resources`)
+      .then((res) => {
+        if (!res.ok) {
+          throw Error("could not fetch the data for for that resourse");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setIsPending(false);
+        setPosts(data.payload);
+        setError(null);
+      })
+      .catch((err) => {
+        //auto catches network / connection error
+        setIsPending(false);
+        setError(err.message);
+      });
+    }, 500)
   }
 
-  console.log(posts);
+
+  //-=-=-=-=-=-=-=-=-=-=-=-=-=-=- EDIT SUBMIT =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+  function onEditSubmit(postId, language, link, summary) {
+    const templateEditedPost = {
+      id: postId,
+      tags: language,
+      summary: summary,
+      link: link
+    };
+
+    fetch(`${API_URL}/weeks/${weekId}/resources/${postId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(templateEditedPost),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw Error("could not fetch the data for for that resourse");
+        }
+        return res.json();
+      })
+      .catch((err) => {
+        //auto catches network / connection error
+        setIsPending(false);
+        setError(err.message);
+      });
+
+
+      setTimeout(() => {
+        fetch(`${API_URL}/weeks/${weekId}/resources`)
+        .then((res) => {
+          if (!res.ok) {
+            throw Error("could not fetch the data for for that resourse");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setIsPending(false);
+          setPosts(data.payload);
+          setError(null);
+        })
+        .catch((err) => {
+          //auto catches network / connection error
+          setIsPending(false);
+          setError(err.message);
+        });
+      }, 500)
+
+  }
+
+  const [editPost, setEditPost] = useState(null);
+
+  function handleEditMode( id ) {
+    const post = posts.filter(item => item.id === id);
+    setEditPost(post);
+    setShowEditModal(true);
+  }
+  // console.log(id);
+
+  // console.log(editPost);
 
   function switchTheme() {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
   }
-
+  //=-=-=-=-=--=-=-=-=-=-=-=-=-=-= THEME TOGGLE CONTROLLER -=-=-=-=--=-=-=-=-=-=-=-=-=-=
   useEffect(() => {
     document.body.dataset.theme = theme;
   }, [theme]);
@@ -198,12 +274,12 @@ function Content() {
       {/* <Header /> */}
 
       {/* /---------------------------------Header End---------------------------------/ */}
-      <Sidebar weeks={weeks} handleWeekId={handleWeekId} theme={theme} />
+      <Sidebar id='sidebar' weeks={weeks} handleWeekId={handleWeekId} theme={theme} />
 
       <div className="main">
-        <DarkLightSwitch onClick={switchTheme} />
 
         <div className="mid">
+          <DarkLightSwitch onClick={switchTheme} />
           {/* //Title top left  */}
           <SubHeading weekId={weekId} weekTopic={weekTopic} />
           {aaif}
@@ -214,11 +290,19 @@ function Content() {
           />
         </div>
 
-        <Posts posts={posts} handleDelete={handleDelete} />
+        { posts ? <Posts posts={posts} handleDelete={handleDelete} 
+                 handleEditMode={handleEditMode} /> : <div>Loading...</div>}
+
         <AddAnItemForm
           onSubmit={onSubmit}
           showModal={showAAIFModal}
           setShowModal={setShowAAIFModal}
+        />
+        <AddAnEditForm 
+          editPost={editPost}
+          onEditSubmit={onEditSubmit} 
+          showEditModal={showEditModal} 
+          setShowEditModal={setShowEditModal}
         />
       </div>
     </div>

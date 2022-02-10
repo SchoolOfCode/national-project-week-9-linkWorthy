@@ -14,14 +14,13 @@
 	font-family: var(--font-style-1);
 	font-size: calc(0.8vw + 0.8em);
 	border-radius: 45px;
-	padding-left: 10%;
-	padding-right: 10%;
+	padding: .3em 1em;
 	white-space: nowrap;
 	text-align: center;
+	transition: all ease-in-out 200ms;
 }
 
 .create-button:hover {
 	cursor: pointer;
-	font-size: calc(0.8vw + 0.8em);
 	background-color: var(--color-three-hover);
 }
