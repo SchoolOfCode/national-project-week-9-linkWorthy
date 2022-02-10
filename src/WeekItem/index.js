@@ -2,7 +2,7 @@ import "./styles.css";
 
 function WeekItem({ week, handleWeekId }) {
 	return (
-		<div
+		<span
 			key={week.id}
 			className="week-div"
 			onClick={() => handleWeekId(week.id, week.topic)}
@@ -10,7 +10,9 @@ function WeekItem({ week, handleWeekId }) {
 			<p className="link-week">WEEK {week.id}</p>
 			<p className="link-topic">{week.topic}</p>
 			<hr />
-		</div>
+		</span>
+
+		
 	);
 }
 

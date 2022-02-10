@@ -10,10 +10,17 @@
 	justify-content: space-evenly;
 	row-gap: 20px;
 	column-gap: 20px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 0 30px 30px 30px;
+	
 	word-wrap: break-word;
+	
+	
+	
 }
+
+/* .extra {
+	width: 100%;
+} */
 
 .add-btn {
 	padding: 1em 1.4em;

@@ -1,10 +1,20 @@
 .sidebar {
   grid-area: sidebar;
   background-color: var(--color-five);
-  height: 100%;
-  padding: 10%;
+  height: 100vh;
+  /* padding: 10%; */
   text-align: center;
+
+  overflow: auto;
 }
+
+/* #sidebar {
+	overflow: auto;
+    height: auto;
+    /* padding: .5rem; */
+    /* -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none; */
+/* } */ 
 
 /* 
 .link-week {

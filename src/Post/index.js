@@ -2,9 +2,9 @@ import React from "react";
 import CompletionButton from "../CompletionButton";
 import "./styles.css";
 
-// { posts }
 
-function Post({ id, isComplete, week, link, tags, summary, handleDelete }) {
+function Post({ id, isComplete, week, link, tags, summary, handleDelete, handleEditMode }) {
+	
 	return (
 		<div className="post post-grid">
 			<div className="post-header">
@@ -34,11 +34,16 @@ function Post({ id, isComplete, week, link, tags, summary, handleDelete }) {
 					</a>
 				</div>
 			</p>
+
 			<p className="post-tags">
-				<span className="tags-span">{tags}</span>
+				{ tags ? <span className="tags-span">{tags}</span> : <span class="material-icons-outlined material-icons tag" onClick={() => handleEditMode(id)}> sell</span>}
+				<p className='edit'>
+					<span className='material-icons-outlined material-icons edit-btn' onClick={() => handleEditMode(id)}>edit</span>
+				</p>
 			</p>
 		</div>
 	);
 }
+
 
 export default Post;

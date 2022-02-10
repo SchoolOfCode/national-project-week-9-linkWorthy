@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-// className="subHead"
+
 function SubHeading({ weekId, weekTopic }) {
 	return (
 		<div>
