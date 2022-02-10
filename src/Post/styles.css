@@ -5,21 +5,21 @@
 	padding: 0.8em;
 	background-color: var(--color-five);
 	border-radius: 8px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 4px 8px 0 var(--color-shade);
 	transition: 0.3s;
 	font-family: var(--font-style-2);
 	color: black;
 	font-weight: 400;
-	flex: 0 1 0px;
+	flex: 0 1 0;
 	word-wrap: break-word;
 	color: var(--text-primary);
-
+	
+	margin-bottom: .8em;
 }
 
 .post:hover {
-	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 8px 16px 0 var(--color-shade);
 }
-
 
 .post-header {
 	display: flex;
