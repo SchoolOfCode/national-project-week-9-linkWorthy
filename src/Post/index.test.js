@@ -6,7 +6,7 @@ test("Check if component CompletionButton exist in Post", () => {
 });
 
 test("Check if the whole line link exist in Post", () => {
-  expect(Post).toContain(
+  expect(Post()).toMatchObject(
     <span className="material-icons-outlined material-icons">link</span>
   );
 });
